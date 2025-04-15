@@ -619,9 +619,18 @@ public abstract class IDevice
                     switch (ProductName)
                     {
                         case "LNVNB161216":
-                            device = new LegionGo();
+                            {
+                                switch (SystemModel)
+                                {
+                                    case "83E1":
+                                        device = new LegionGo();
+                                        break;
+                                    case "83DA":
+                                        device = new IdeaPadSlim5();
+                                        break;
+                                }
+                            }
                             break;
-
                         // Weird...
                         case "INVALID":
                             {
