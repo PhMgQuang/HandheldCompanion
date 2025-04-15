@@ -17,15 +17,6 @@ namespace HandheldCompanion.Devices;
 
 public class IdeaPadSlim5 : IDevice
 {
-    public enum IdeaPadMode
-    {
-        Quiet = 0x01,
-        Balanced = 0x02,
-        Performance = 0x03,
-        MaxPerformance = 0x04,
-        Custom = 0xFF,
-    }
-
     public enum CapabilityID
     {
 
@@ -39,13 +30,13 @@ public class IdeaPadSlim5 : IDevice
 
         // https://www.intel.com/content/www/us/en/products/sku/236847/intel-core-ultra-7-processor-155h-24m-cache-up-to-4-80-ghz/specifications.html
         nTDP = new double[] { 30, 30, 55 };
-        cTDP = new double[] { 5, 65 };
+        cTDP = new double[] { 10, 65 };
         GfxClock = new double[] { 100, 2250 };
         CpuClock = 4800;
 
         // TODO
         // Quiet
-        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileOneXPlayerX1IntelBetterBattery, Properties.Resources.PowerProfileOneXPlayerX1IntelBetterBatteryDesc)
+        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileLegionGoBetterBattery, Properties.Resources.PowerProfileLegionGoBetterBatteryDesc)
         {
             Default = true,
             DeviceDefault = true,
@@ -53,11 +44,11 @@ public class IdeaPadSlim5 : IDevice
             CPUBoostLevel = CPUBoostLevel.Disabled,
             Guid = BetterBatteryGuid,
             TDPOverrideEnabled = true,
-            TDPOverrideValues = new[] { 15.0d, 15.0d, 15.0d }
+            TDPOverrideValues = new[] { 15.0d, 15.0d, 30.0d }
         });
 
         // Balanced
-        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileOneXPlayerX1IntelBetterPerformance, Properties.Resources.PowerProfileOneXPlayerX1IntelBetterPerformanceDesc)
+        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileLegionGoBetterPerformance, Properties.Resources.PowerProfileLegionGoBetterPerformanceDesc)
         {
             Default = true,
             DeviceDefault = true,
@@ -65,33 +56,19 @@ public class IdeaPadSlim5 : IDevice
             CPUBoostLevel = CPUBoostLevel.Enabled,
             Guid = BetterPerformanceGuid,
             TDPOverrideEnabled = true,
-            TDPOverrideValues = new[] { 30.0d, 30.0d, 30.0d }
+            TDPOverrideValues = new[] { 30.0d, 30.0d, 55.0d }
         });
 
         // Performance
-        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileOneXPlayerX1IntelBetterPerformance, Properties.Resources.PowerProfileOneXPlayerX1IntelBetterPerformanceDesc)
+        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileLegionGoBestPerformance, Properties.Resources.PowerProfileLegionGoBestPerformanceDesc)
         {
             Default = true,
             DeviceDefault = true,
             OSPowerMode = OSPowerMode.BetterPerformance,
             CPUBoostLevel = CPUBoostLevel.Enabled,
-            Guid = BetterPerformanceGuid,
-            TDPOverrideEnabled = true,
-            TDPOverrideValues = new[] { 40.0d, 40.0d, 55.0d }
-        });
-
-        // Max Performance
-        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileOneXPlayerX1IntelBestPerformance, Properties.Resources.PowerProfileOneXPlayerX1IntelBestPerformanceDesc)
-        {
-            Default = true,
-            DeviceDefault = true,
-            OSPowerMode = OSPowerMode.BestPerformance,
-            CPUBoostLevel = CPUBoostLevel.Enabled,
             Guid = BestPerformanceGuid,
             TDPOverrideEnabled = true,
-            TDPOverrideValues = new[] { 45.0d, 45.0d, 64.0d },
-            EPPOverrideEnabled = true,
-            EPPOverrideValue = 64,
+            TDPOverrideValues = new[] { 40.0d, 40.0d, 60.0d }
         });
     }
 
