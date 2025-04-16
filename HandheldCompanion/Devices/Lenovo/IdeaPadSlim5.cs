@@ -34,6 +34,17 @@ public class IdeaPadSlim5 : IDevice
         GfxClock = new double[] { 100, 2250 };
         CpuClock = 4800;
 
+        DevicePowerProfiles.Clear();
+
+        // default profile
+        DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileDefaultName, Properties.Resources.PowerProfileDefaultDescription)
+        {
+            Default = true,
+            Guid = Guid.Empty,
+            OSPowerMode = OSPowerMode.BetterBattery,
+            TDPOverrideValues = new double[] { this.nTDP[0], this.nTDP[1], this.nTDP[2] }
+        });
+
         // TODO
         // Quiet
         DevicePowerProfiles.Add(new(Properties.Resources.PowerProfileLegionGoBetterBattery, Properties.Resources.PowerProfileLegionGoBetterBatteryDesc)
